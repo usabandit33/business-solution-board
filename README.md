@@ -11,6 +11,12 @@ Not another social network. A living database of:
 - Willingness to pay
 - Results from real tests
 
+## Current Status
+
+- **45 real HVAC problems** seeded in `data/seed-problems/` (from Reddit + industry sources 2023–2026)
+- Soft-outreach templates and channel list ready in `docs/outreach/`
+- Ready for first validation: confirm problems → “I’d test” → “I’d pay”
+
 ## Core Loop
 
 1. Business owner posts a problem
@@ -25,7 +31,7 @@ Not another social network. A living database of:
 
 **Home-service businesses:**
 
-- HVAC
+- HVAC ← **starting here**
 - Plumbing
 - Electrical
 - Appliance repair
@@ -92,7 +98,7 @@ A future Mogul scout can pull high-signal problems from this board instead of on
 
 Nobody posts because nobody answers, and nobody answers because nobody posts.
 
-**Mitigation:** Seed the board with real business problems *before* trying to grow a large community.
+**Mitigation:** Seed the board with real business problems *before* trying to grow a large community. **Done for HVAC.**
 
 First validation question:
 > Do people naturally confirm problems, propose solutions, and express willingness to test or pay?
@@ -101,13 +107,9 @@ First validation question:
 
 Prefer **observed complaints** over survey answers.
 
-Sources:
-- Reddit (r/smallbusiness, industry subs)
-- Alignable
-- Facebook groups
-- Industry forums
-- Google Reviews / BBB complaints
-- Industry podcasts & comments
+Sources used so far:
+- Reddit (r/HVAC, r/hvacpeople, r/hvacadvice)
+- Industry reports & forums
 
 Strong signal:
 > "I spent my entire Saturday doing this manually."
@@ -128,15 +130,15 @@ Build a place where business problems become:
 ## Repo Structure
 
 ```
-├── README.md                 # This file
+├── README.md
 ├── docs/
-│   ├── concept.md            # Full project concept
-│   ├── research/             # Seeded problems & sources
-│   └── mvp-spec.md           # Detailed MVP requirements
+│   ├── concept.md
+│   ├── mvp-spec.md
+│   ├── research/
+│   └── outreach/          # Soft outreach templates & channels
 ├── data/
-│   └── seed-problems/        # Initial real problems (JSON/Markdown)
-└── .github/
-    └── ...
+│   └── seed-problems/     # 45 real HVAC problems
+└── research/              # (on research branch) original chat + source docs
 ```
 
-See the `research` branch for the original chat history and collected complaints.
+See the `research` branch for the original chat history and concept source.
