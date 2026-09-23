@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Business Solution Board</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --border: #334155;
+      --success: #22c55e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+      line-height: 1.45;
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: var(--muted);
+    }
+    input[type="email"],
+    input[type="text"] {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    input:focus {
+      border-color: var(--accent);
+    }
+    .roles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .role {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .role:hover {
+      border-color: var(--accent);
+      background: rgb(59 130 246 / 0.08);
+    }
+    .role input {
+      margin-top: 0.2rem;
+      accent-color: var(--accent);
+    }
+    .role-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .role-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 10px;
+      background: var(--accent);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    button:hover {
+      background: var(--accent-hover);
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .success {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+    .success h2 {
+      color: var(--success);
+      margin-bottom: 0.5rem;
+    }
+    .success p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .error {
+      color: #f87171;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .note {
+      margin-top: 1.25rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div id="form-view">
+      <h1>Join the Board</h1>
+      <p class="subtitle">
+        Tell us how you’ll participate. We’ll only email you when it matters
+        (new solutions to problems you care about, or when someone is ready to test).
+      </p>
+
+      <div class="error" id="error"></div>
+
+      <form id="signup-form">
+        <label for="email">Email address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="you@company.com"
+          required
+          autocomplete="email"
+        />
+
+        <label for="name">Display name <span style="font-weight:400">(optional)</span></label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Alex or Alex’s HVAC"
+          autocomplete="name"
+        />
+
+        <label>How will you participate? <span style="font-weight:400">(pick one or more)</span></label>
+        <div class="roles">
+          <label class="role">
+            <input type="checkbox" name="roles" value="business_owner" />
+            <div>
+              <div class="role-title">Business Owner</div>
+              <div class="role-desc">I run a real business and want to post or validate problems</div>
+            </div>
+          </label>
+          <label class="role">
+            <input type="checkbox" name="roles" value="solver" />
+            <div>
+              <div class="role-title">Solver</div>
+              <div class="role-desc">I propose practical solutions from experience</div>
+            </div>
+          </label>
+          <label class="role">
+            <input type="checkbox" name="roles" value="builder" />
+            <div>
+              <div class="role-title">Builder</div>
+              <div class="role-desc">I claim problems and build working solutions</div>
+            </div>
+          </label>
+          <label class="role">
+            <input type="checkbox" name="roles" value="observer" />
+            <div>
+              <div class="role-title">Observer</div>
+              <div class="role-desc">I want to follow and learn for now</div>
+            </div>
+          </label>
+        </div>
+
+        <button type="submit" id="submit-btn">Create my account</button>
+      </form>
+
+      <p class="note">
+        By signing up you agree we can email you about problems and solutions
+        you follow. No spam. Unsubscribe anytime.
+      </p>
+    </div>
+
+    <div class="success" id="success-view">
+      <h2>You’re in.</h2>
+      <p id="success-msg">
+        Check your inbox for a confirmation link.<br />
+        We’ll only email you when it’s relevant.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('signup-form');
+    const errorEl = document.getElementById('error');
+    const formView = document.getElementById('form-view');
+    const successView = document.getElementById('success-view');
+    const successMsg = document.getElementById('success-msg');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorEl.style.display = 'none';
+
+      const email = document.getElementById('email').value.trim();
+      const name = document.getElementById('name').value.trim();
+      const roles = Array.from(document.querySelectorAll('input[name="roles"]:checked'))
+        .map(cb => cb.value);
+
+      if (!email) {
+        errorEl.textContent = 'Email is required.';
+        errorEl.style.display = 'block';
+        return;
+      }
+      if (roles.length === 0) {
+        errorEl.textContent = 'Please select at least one role.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating…';
+
+      // Payload ready for any backend / Grok Build / Formspree / etc.
+      const payload = {
+        email,
+        display_name: name || null,
+        roles,
+        source: 'signup-page',
+        created_at: new Date().toISOString()
+      };
+
+      // For now we store locally + log so you can see it working.
+      // Replace this block with a real API call later.
+      try {
+        const existing = JSON.parse(localStorage.getItem('bsb_signups') || '[]');
+        existing.push(payload);
+        localStorage.setItem('bsb_signups', JSON.stringify(existing));
+
+        console.log('Signup captured:', payload);
+
+        // Optional: send to a webhook / email service
+        // await fetch('YOUR_ENDPOINT', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+
+        formView.style.display = 'none';
+        successView.style.display = 'block';
+        successMsg.innerHTML = `Thanks${name ? ', ' + name : ''}.<br>We saved your roles: <strong>${roles.join(', ')}</strong>.<br>You’ll get a confirmation email shortly.`;
+      } catch (err) {
+        errorEl.textContent = 'Something went wrong. Please try again.';
+        errorEl.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Create my account';
+      }
+    });
+  </script>
+</body>
+</html>
